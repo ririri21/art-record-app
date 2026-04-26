@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アート記録アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="tab-bar">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="tabs">
+      <a href="index.html" class="tab active">記録する</a>
+      <a href="collection.html" class="tab">コレクション</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="painter-quote" id="painterQuote">
+      <img class="painter-avatar" id="painterAvatar" alt="">
+      <div class="painter-quote-body">
+        <p class="painter-quote-text" id="painterQuoteText"></p>
+        <p class="painter-quote-name" id="painterQuoteName"></p>
+      </div>
+    </div>
+
+    <div class="upload-area" id="uploadArea">
+      <input type="file" id="fileInput" accept="image/*" hidden>
+      <div class="upload-placeholder" id="uploadPlaceholder">
+        <span class="upload-icon">+</span>
+        <p>写真をアップロード</p>
+      </div>
+      <img id="previewImage" class="preview-image hidden" alt="プレビュー">
+    </div>
+
+    <button class="upload-btn" id="uploadBtn">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+        <circle cx="12" cy="13" r="3"/>
+      </svg>
+      作品を追加する
+    </button>
+
+    <button class="analyze-btn hidden" id="analyzeBtn">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+        <path d="M20 3v4m2-2h-4"/>
+        <path d="M4 17v2m1-1H3"/>
+      </svg>
+      <span id="analyzeBtnText">AIで作品情報を取得する</span>
+    </button>
+
+    <div class="result-section hidden" id="resultSection">
+      <div class="result-item">
+        <span class="result-label">作者</span>
+        <input class="result-input" id="resultArtist" type="text" placeholder="不明">
+      </div>
+      <div class="result-item">
+        <span class="result-label">タイトル</span>
+        <input class="result-input" id="resultTitle" type="text" placeholder="不明">
+      </div>
+      <div class="result-item">
+        <span class="result-label">制作年</span>
+        <input class="result-input" id="resultYear" type="text" placeholder="不明">
+      </div>
+    </div>
+
+    <div class="error-message hidden" id="errorMessage"></div>
+
+    <div class="memo-section">
+      <label for="memo">メモ</label>
+      <textarea id="memo" placeholder="作品についてメモを書いてください..."></textarea>
+    </div>
+
+    <button class="save-btn hidden" id="saveBtn">コレクションに保存</button>
+    <div class="save-success hidden" id="saveSuccess">保存しました</div>
+  </div>
+
+  <!-- Side drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel">
+      <p class="drawer-title">設定</p>
+      <div class="drawer-section">
+        <label for="apiKeyInput">Gemini APIキー</label>
+        <input type="password" id="apiKeyInput" class="drawer-input" placeholder="AIzaSy...">
+        <button class="drawer-save-btn" id="saveKeyBtn">保存する</button>
+        <p class="api-key-hint" id="apiKeyStatus"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="drawer.js"></script>
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
