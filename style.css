@@ -393,11 +393,17 @@ textarea::placeholder {
   letter-spacing: 0.04em;
   font-family: inherit;
   transition: background 0.15s, color 0.15s;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sort-btn:hover {
   background: #e6e6e0;
   color: #444;
+}
+
+.sort-btn:focus-visible {
+  box-shadow: 0 0 0 2px #aab4f0;
 }
 
 /* Century sections wrapper */
