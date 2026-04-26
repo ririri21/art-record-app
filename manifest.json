@@ -1,0 +1,15 @@
+{
+  "name": "アート記録",
+  "short_name": "アート記録",
+  "start_url": "/art-record-app/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
