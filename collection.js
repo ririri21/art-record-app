@@ -84,7 +84,7 @@ async function render() {
 
 sortBtn.addEventListener('click', () => {
   sortOrder = sortOrder === 'desc' ? 'asc' : 'desc';
-  sortBtn.textContent = sortOrder === 'desc' ? '新しい順' : '古い順';
+  sortBtn.textContent = sortOrder === 'desc' ? '新しい順 ↓' : '古い順 ↑';
   render();
 });
 
