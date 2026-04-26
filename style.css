@@ -683,3 +683,17 @@ textarea::placeholder {
 .api-key-hint.saved {
   color: #4a9c6f;
 }
+
+.drawer-section-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.drawer-import-label {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}

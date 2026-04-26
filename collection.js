@@ -134,3 +134,35 @@ modalDelete.addEventListener('click', async () => {
 });
 
 artDB.migrateFromLocalStorage().then(() => render());
+
+// エクスポート
+document.getElementById('exportBtn').addEventListener('click', async () => {
+  const data = await artDB.getAll();
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'art-collection.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+// インポート
+document.getElementById('importFile').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const status = document.getElementById('importStatus');
+  try {
+    const text = await file.text();
+    const artworks = JSON.parse(text);
+    for (const artwork of artworks) {
+      await artDB.save(artwork);
+    }
+    status.textContent = `${artworks.length}件をインポートしました`;
+    e.target.value = '';
+    render();
+  } catch {
+    status.textContent = 'インポートに失敗しました';
+  }
+});
